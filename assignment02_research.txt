@@ -1,0 +1,30 @@
+r'([\w]+)@([\w]+)\.edu' 
+	--> r'([\w\.]+)@([\w\.]+)\.edu'		Any word character or dot
+	--> r'([\w\.]+)\ ?@\ ?([\w\.]+)\.edu'	For ulman - allow space before/after @
+	--> r'([\w\.]+)\ *@\ *([\w\.]+)\.edu'	For dabo - allow spaceS
+	--> r'([\w\.]+)\ *@\ *([\w\.]+)\.[eE][dD][uU]' --> For cheriton, allow EDU as well as edu
+r'([\w\.]+)\ ?<at symbol>\ ?([\w\.]+)\.edu') --> for manning
+epatterns.append(r'([\w\.]+)&#x40;([\w\.]+)\.edu') --> levoy
+epatterns.append(r'([\w\.]+)<del>@([\w\.]+)\.edu') --> latombe
+
+r'([\w\.]+)\s+at\s+<![^>]+>\s+([\w\.]+)\s+<![^>]+>\s+dot\s+<![^>]+>\s+edu')   (FOR VLADEN)
+r'([\w\.]+)\ ?[aA][tT]\ ?([\w\.]+)\ [dD][oO][tT] edu'
+r'([\w\.]+)\ [\(\w\"\ ]+?@([\w\.]+).edu[\"\)]+' (for teresa.lynn in ouster)
+r'mail:\s+([\w\.]+)\s+at\s+([\w\.]+)\.edu' --> lam
+r'([\w\.]+)\ \(followed by \&ldquo;@([\w\.]+)\.edu'--> ouster
+r'(\w+) WHERE (\w+) DOM' --> engler
+
+Pre-processing
+r'([\w\.]+) at (((([\w\.]+)|dot|dt)\s)+)(edu|com)'
+r"obfuscate\('([\w\.]+)','([\w\.]+)'\)"
+r'([\w\.]+) at ((\w+;)+(\w+))' --> for jks at robotics;sanford;edu
+r'((((\w)-)+)@-(((\w)-)+)\.((-(\w))+))' -> for dlwh all chars separated by dashes
+
+
+phone
+ppatterns.append(r'(\d{3})-(\d{3})-(\d{4})')
+	--> ppatterns.append(r'(\d{3})[-\s](\d{3})[-\s](\d{4})')
+ppatterns.append(r'\((\d{3})\)(\d{3})-(\d{4})')
+	--> ppatterns.append(r'\((\d{3})\)\s*(\d{3})-(\d{4})')
+ppatterns.append(r'\[(\d{3})\]\s(\d{3})-(\d{4})')
+
